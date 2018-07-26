@@ -1,4 +1,4 @@
-* Dialogflow Redux test
+**Dialogflow Redux test**
 
 ( *React demo runs on localhost 3500* )
 
