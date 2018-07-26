@@ -12,10 +12,10 @@ class App extends Component {
         <div className="container p-2 pt-4 bg-dark text-white">
           <h2>Dialogflow Redux Text</h2>
         </div>
+        <div className="bg-secondary">
+          <small>POWERED BY HELIUM</small>
+        </div>
         <div className="container p-2">
-          <div className="container bg-light">
-            <small>POWERED BY HELIUM</small>
-          </div>
           <ul>
             {feed.map((entry, i) => 
               <li key={i}>
