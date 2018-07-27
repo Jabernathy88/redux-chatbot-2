@@ -13,18 +13,14 @@ class App extends Component {
           return (
             <div className="server-response float-right" key={i}>
               {entry.text}
-              {console.log(entry)}
             </div>
           );
-          break;
         case "user":
           return (
             <div className="user-request float-left" key={i}>
               {entry.text}
-              {console.log(entry)}
             </div>
           );
-          break;
         default:
           break;
       }
@@ -45,15 +41,12 @@ class App extends Component {
 
         {/* <Main /> */}
         <div className="container-fluid pt-2">
-          {/* <p><strong>Meet our new intern. Say hi!</strong></p>       */}
-
           <div className="chat-container bg-white">
             <div className="chat-header">
               <div className="chat-header-wrapper w-100 d-flex align-items-center text-white">
                 <div className="chat-icon text-center d-inline-block d-inline-block m-4">
                   <img className="chat-img-logo" src="./images/helium-white-icon.png" alt=""/>
                 </div>
-
                 <div className="d-inline-block">
                   <div className="chat-title">
                     <h4 className="font-weight-normal p-0">Katie</h4>
@@ -89,13 +82,12 @@ class App extends Component {
               <div id="chatForm" className="h-100 w-100" action="">
                 <input
                   id="query"
-                  className="h-100 w-100"
+                  className="h-100 w-100 p-2"
                   type="text"
                   onKeyDown={(event) => event.keyCode === 13
                   ? sendMessage(event.target.value)
                   : null}/>
               </div>
-              <div className="mic-icon"></div>
             </div>
           </div>
         </div>
