@@ -1,1 +1,226 @@
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+/* Jeremy's starter css */
+
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+/* defaults */
+
+html,
+body,
+#root,
+#content {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: block;
+}
+
+div,
+header,
+nav,
+footer {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  padding: 35px 0 5px;
+}
+
+h2 {
+  padding: 20px 0 5px;
+}
+
+h3 {
+  padding: 10px 0 5px;
+}
+
+h4,
+h5,
+h6,
+p {
+  padding: 8px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+/* responsive text sizes */
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background: rgb(255, 255, 255);
+}
+
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+/* tablet */
+
+@media screen and (min-width: 420px) {
+  html {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 4.0rem;
+  }
+  h2 {
+    font-size: 2.0rem;
+  }
+  h3 {
+    font-size: 1.7rem;
+  }
+  h4 {
+    font-size: 1.4rem;
+  }
+}
+
+/* desktop */
+
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 4.2rem;
+  }
+  h2 {
+    font-size: 2.1rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+#content {
+  background: rgba(48, 188, 237, 0.15);
+}
+
+header {
+  background: #fff;
+}
+
+/* baloon logo mobile */
+
+.header-img-logo {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 60px;
+}
+
+/* baloon logo: desktop */
+
+@media screen and (min-width: 900px) {
+  .header-img-logo {
+    top: 10px;
+    left: 30px;
+    width: 80px;
+  }
+}
+
+.header-text-logo {
+  padding: 14px 80px 6px;
+  height: 80px;
+}
+
+.blue-bar {
+  background: rgb(63, 153, 218);
+}
+
+/* chat containers */
+
+.chat-container {
+  width: 320px;
+  margin: 0 auto;
+}
+
+/* outer div: desktop */
+
+@media screen and (min-width: 900px) {
+  /* .chat-container { width: 480px; } */
+}
+
+.chat-header {
+  background: rgb(18, 41, 65);
+}
+
+/* match image height to width of parent div */
+
+div.chat-icon {
+  width: 40px;
+}
+
+.chat-img-logo {
+  height: 40px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.chat-top-nav {
+  background: rgb(48, 188, 237);
+}
+
+.chat-result {
+  box-sizing: border-box;
+  height: 320px;
+  overflow: scroll;
+}
+
+.chat-input {
+  border-top: 0.6px solid lightgrey;
+  height: 60px;
+}
+
+input#query {
+  border: none;
+}
+
+td#result {
+  vertical-align: bottom;
+}
+
+/* chat bubbles */
+
+.user-request,
+.server-response {
+  width: 90%;
+  border-radius: 2px;
+  margin: 12px 4px 2px;
+  padding: 6px 2px 2px;
+}
+
+.user-request {
+  padding-right: 6px;
+  background: rgba(48, 188, 237, .15);
+}
+
+.server-response {
+  padding-left: 6px;
+  background: rgba(48, 188, 237, .35);
+}
