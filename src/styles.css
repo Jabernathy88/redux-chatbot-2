@@ -190,6 +190,8 @@ div.chat-icon {
   box-sizing: border-box;
   height: 320px;
   overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .chat-input {
