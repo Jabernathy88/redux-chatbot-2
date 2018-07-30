@@ -211,10 +211,11 @@ td#result {
 
 .user-request,
 .server-response {
-  width: 90%;
+  min-width: 60%;
+  max-width: 90%;
   border-radius: 2px;
   margin: 12px 4px 2px;
-  padding: 6px 2px 2px;
+  padding: 6px;
 }
 
 .user-request {
