@@ -24,20 +24,25 @@ class UserInfoForm extends Component {
   }
 
   handleSubmit = () => {
-    this
-      .props
-      .sendMessage(`Hi, I'm ${this.state.userInfo.name}. You can reach me at ${this.state.userInfo.phone}
+
+    if (this.state.userInfo.name === "" && this.state.userInfo.phone === "") {
+      alert("I'm sorry, but I'll need at least a name and phone number before moving on.")
+    } else {
+      this
+        .props
+        .sendMessage(`Hi, I'm ${this.state.userInfo.name}. You can reach me at ${this.state.userInfo.phone}
     ${this.state.userInfo.email}`)
-    this.setState({
-      userInfo: {
-        name: "",
-        phone: "",
-        email: ""
-      }
-    })
-    this
-      .props
-      .toggleHaveUserInfo()
+      this.setState({
+        userInfo: {
+          name: "",
+          phone: "",
+          email: ""
+        }
+      })
+      this
+        .props
+        .toggleHaveUserInfo()
+    }
 
   }
 
