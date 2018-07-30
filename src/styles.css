@@ -194,6 +194,26 @@ div.chat-icon {
   flex-direction: column-reverse;
 }
 
+.user-info {
+  box-sizing: border-box;
+  height: 320px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+
+.start-chat-button {
+  background: rgba(48, 188, 237, .15);
+  border: none;
+}
+
 .chat-input {
   border-top: 0.6px solid lightgrey;
   height: 60px;

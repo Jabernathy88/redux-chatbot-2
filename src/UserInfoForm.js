@@ -26,10 +26,8 @@ class UserInfoForm extends Component {
   handleSubmit = () => {
     this
       .props
-      .sendMessage("Namaste")
-    this
-      .props
-      .setHaveUserInfoToTrue()
+      .sendMessage(`Hi, I'm ${this.state.userInfo.name}. You can reach me at ${this.state.userInfo.phone}
+    ${this.state.userInfo.email}`)
     this.setState({
       userInfo: {
         name: "",
@@ -37,6 +35,10 @@ class UserInfoForm extends Component {
         email: ""
       }
     })
+    this
+      .props
+      .toggleHaveUserInfo()
+
   }
 
   render() {
@@ -44,34 +46,48 @@ class UserInfoForm extends Component {
       <div className="container-fluid pt-2">
         <div className="chat-container bg-white">
           <ChatHeader name="User Info"/>
-          <div className="chat-result w-100 pt-4">
+          <div className="w-100 pt-4 user-info">
             {/* main content */}
-            <div>
-              <label htmlFor="name">Name
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  onChange={this.handleChange}
-                  value={this.state.userInfo.name}/>
-              </label>
-              <label htmlFor="phone">Phone Number
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  onChange={this.handleChange}
-                  value={this.state.userInfo.phone}/>
-              </label>
-              <label htmlFor="email">E-mail
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  onChange={this.handleChange}
-                  value={this.state.userInfo.email}/>
-              </label>
-              <button onClick={this.handleSubmit}>Start Chat</button>
+            <div className="info-field">
+
+              <div htmlFor="name">Name:</div>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="John Doe"
+                onChange={this.handleChange}
+                value={this.state.userInfo.name}/>
+            </div>
+            <div className="info-field">
+              <div htmlFor="phone">Phone Number:
+              </div>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="123-456-7890"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                onChange={this.handleChange}
+                value={this.state.userInfo.phone}/>
+            </div>
+            <div className="info-field">
+
+              <div htmlFor="email">E-mail:
+              </div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="example@email.com"
+                onChange={this.handleChange}
+                value={this.state.userInfo.email}/>
+            </div>
+          </div>
+
+          <div className="chat-input p-1">
+            <div id="chatForm" className="h-100 w-100">
+              <button className="h-100 w-100 start-chat-button" onClick={this.handleSubmit}>Start Chat</button>
             </div>
           </div>
         </div>

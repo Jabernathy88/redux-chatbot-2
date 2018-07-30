@@ -6,7 +6,7 @@ import './styles.css'
 export default class App extends Component {
 
   state = {
-    haveUserInfo: true
+    haveUserInfo: false
   }
 
   toggleHaveUserInfo = () => {
@@ -16,6 +16,9 @@ export default class App extends Component {
   }
 
   render() {
+
+    // const toggleHaveUserInfo = () => {   this.setState({     haveUserInfo:
+    // !this.state.haveUserInfo   }) }
 
     return (
 
@@ -33,7 +36,7 @@ export default class App extends Component {
 
         {this.state.haveUserInfo
           ? <ChatBot/>
-          : <UserInfoForm/>}
+          : <UserInfoForm toggleHaveUserInfo={this.toggleHaveUserInfo}/>}
       </div>
     )
   }
