@@ -72,7 +72,6 @@ class UserInfoForm extends Component {
                 name="phone"
                 id="phone"
                 placeholder="123-456-7890"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 onChange={this.handleChange}
                 value={this.state.userInfo.phone}/>
             </div>

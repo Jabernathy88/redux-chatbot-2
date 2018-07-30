@@ -4,7 +4,6 @@ import UserInfoForm from './UserInfoForm.js'
 import './styles.css'
 
 export default class App extends Component {
-
   state = {
     haveUserInfo: false
   }
@@ -17,13 +16,8 @@ export default class App extends Component {
 
   render() {
 
-    // const toggleHaveUserInfo = () => {   this.setState({     haveUserInfo:
-    // !this.state.haveUserInfo   }) }
-
     return (
-
       <div id="content" className="">
-        {/* temp header */}
         <header>
           <div className="w-100">
             <img className="header-img-logo" src="./images/helium-logo.png" alt=""/>
