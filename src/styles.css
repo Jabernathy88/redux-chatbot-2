@@ -191,6 +191,28 @@ div.chat-icon {
   box-sizing: border-box;
   height: 320px;
   overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.user-info {
+  box-sizing: border-box;
+  height: 320px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+
+.start-chat-button {
+  background: rgba(48, 188, 237, .15);
+  border: none;
 }
 
 .chat-input {
@@ -210,10 +232,11 @@ td#result {
 
 .user-request,
 .server-response {
-  width: 90%;
+  min-width: 60%;
+  max-width: 90%;
   border-radius: 2px;
   margin: 12px 4px 2px;
-  padding: 6px 2px 2px;
+  padding: 6px;
 }
 
 .user-request {
