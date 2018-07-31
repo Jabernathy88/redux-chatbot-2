@@ -1,7 +1,7 @@
 import {ApiAiClient} from 'api-ai-javascript';
 import {applyMiddleware, createStore} from 'redux';
 
-const accessToken = '6085f9ad0c3b400cb36dcf32521f2c0c';
+const accessToken = '9c88e5ecdf0a4bb28464039cc316a760';
 const client = new ApiAiClient({accessToken});
 
 const ON_MESSAGE = 'ON_MESSAGE';
