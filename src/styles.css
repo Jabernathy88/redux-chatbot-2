@@ -150,7 +150,8 @@ header {
 }
 
 .blue-bar {
-  background: rgb(63, 153, 218);
+  /* background: rgb(63, 153, 218); */
+  background: rgb(150, 90, 190);
 }
 
 /* chat containers */
