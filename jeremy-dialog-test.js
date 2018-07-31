@@ -3,25 +3,26 @@
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Text, Card, Image, Suggestion, Payload} = require('dialogflow-fulfillment');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
 
-process.env.DEBUG = 'dialogflow:debug'; 
+process.env.DEBUG = 'dialogflow:debug';
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
   
+  // doesn't work right
   const userInfoCollected = {
-    names: [],
-    phoneNumbers: [],
-    emails: [],
+    names: ['David Kim'],
+    phoneNumbers: ['404 444 4444'],
+    emails: ['david@heliumservice.com'],
     deviceInfo: [],
     budgetInfo: [],
     timelineInfo: []
   }
-  
-  function emailUserInfo() {
+
+  function emailUserInfo(agent) {
     const emailMessage = `
       <p>You have a new contact request</p>
       <h3>Contact Details</h3>
@@ -34,9 +35,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
       <ul>
         <li><strong>Project Details</strong></li>
-        <li>deviceInfo: ${userInfoCollected.deviceInfo.toString(", ")}</li>
-        <li>budgetInfo: ${userInfoCollected.budgetInfo.toString(", ")}</li>
-        <li>timelineInfo: ${userInfoCollected.timelineInfo.toString(", ")}</li>
+        <li>Type of App: ${agent.parameters["device_platform.original"]}</li>
+        <li>Budget Estimate: ${agent.parameters["unit-currency.original"]}</li>
+        <li>Timeline: ${agent.parameters["duration.original"]}</li>
       </ul>`;
 
     // reusable transporter using SMTP
@@ -70,7 +71,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       console.log('Message sent: %s', info.messageId);
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg: 'Email has been sent!'})
+      res.render('contact', {msg: 'Email has been sent!'});
     });
   }
 
@@ -101,7 +102,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       `Understood! I made a note about your budget estimate. Do you have a timeline in mind?`
     ];
     const randomResponse = responseArray[Math.floor(Math.random() * responseArray.length)];
-    const savedDeviceInfo = userInfoCollected.deviceInfo
+    const savedDeviceInfo = userInfoCollected.deviceInfo;
     if (agent.parameters.length >= 1) {
       agent.add(`HAVE DEVICE AND BUDGET`)
     } else {
@@ -111,7 +112,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function clientSharesTimelineInfo(agent) {
     const timelineInfo = agent.parameters["duration.original"];
-    userInfoCollected.timelineInfo.push(timelineInfo)
+    userInfoCollected.timelineInfo.push(timelineInfo);
     const responseArray = [
       `Good to know. I made a note about your timeline. Are there technical needs or functions that interest you?`,
       `Alrighty. I made a note about your budget estimate. Are there technical needs or functions that interest you?`,
@@ -128,6 +129,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     }
   }
 
+  function endingAfterDevice(agent) {
+    agent.add(`Great. Technical needs done. Let me send an email to Joe.`);
+    emailUserInfo(agent);
+  }
+
   function fallback(agent) {
     const responseArray = [
       `Sorry I didn't understand. Could you restate that maybe?`, 
@@ -138,10 +144,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcome);
-  intentMap.set('Client Shares Device Platform Info', clientSharesDevicePlatformInfo);
-  intentMap.set('Client Shares Budget Info', clientSharesBudgetInfo);
-  intentMap.set('Client Shares Timeline Info', clientSharesTimelineInfo);
-  intentMap.set('Default Fallback Intent', fallback);
-  agent.handleRequest(intentMap);
+    intentMap.set('Default Welcome Intent', welcome);
+    intentMap.set('Client Shares Device Platform Info', clientSharesDevicePlatformInfo);
+    intentMap.set('Client Shares Budget Info', clientSharesBudgetInfo);
+    intentMap.set('Client Shares Timeline Info', clientSharesTimelineInfo);
+    intentMap.set('Default Fallback Intent', fallback);
+    intentMap.set('2A_TECH', endingAfterDevice);
+    agent.handleRequest(intentMap);
 });

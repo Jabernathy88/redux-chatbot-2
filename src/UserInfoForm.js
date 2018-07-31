@@ -24,7 +24,6 @@ class UserInfoForm extends Component {
   }
 
   handleSubmit = () => {
-
     if (this.state.userInfo.name === "" && this.state.userInfo.phone === "") {
       alert("I'm sorry, but I'll need at least a name and phone number before moving on.")
     } else {
