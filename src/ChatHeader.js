@@ -13,15 +13,15 @@ const ChatHeader = (props) => {
               <h4 className="font-weight-normal p-0">{props.name}</h4>
             </div>
             <div className="chat-subtitle font-weight-light">
-              Helium Services
+              {/* Helium Services */}
             </div>
           </div>
         </div>
       </div>
       <div className="chat-top-nav text-right p-2 small">
-        <span className="text-white-50">POWERED BY
+        {/* <span className="text-white-50">POWERED BY
         </span>
-        <strong className="text-light">HELIUM</strong>
+        <strong className="text-light">DIALOGFLOW</strong> */}
       </div>
     </div>
   );
